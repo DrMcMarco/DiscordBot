@@ -37,6 +37,10 @@ async def times(ctx, left: int, right: int):
     await ctx.send(left * right)
 
 @bot.command()
+async def say(ctx, message):
+    await ctx.send(message)
+
+@bot.command()
 async def update(ctx):
     subprocess.Popen('./update.sh')
     print(f'Updating, see you on the other side')
