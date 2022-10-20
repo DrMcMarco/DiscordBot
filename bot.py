@@ -41,6 +41,10 @@ async def say(ctx, message):
     await ctx.send(message)
 
 @bot.command()
+async def cool(ctx):
+    await ctx.send(f'{ctx.author} is cool!')
+
+@bot.command()
 async def update(ctx):
     subprocess.Popen('./update.sh')
     print(f'Updating, see you on the other side')
