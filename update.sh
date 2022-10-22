@@ -3,4 +3,4 @@
 echo 'Updating...'
 git pull origin master
 echo 'Finished. Starting bot...'
-systemctl restart discord-bot
+systemctl --user restart discord-bot
