@@ -22,7 +22,7 @@ loginctl enable-linger <username>
 export XDG_RUNTIME_DIR=/run/user/$(id -u)
 ```
 
-Reboot your system.
+Reboot your system and log in to the non-root account.
 
 Afterwards you have to check two environment variables:
 ```
@@ -30,9 +30,11 @@ echo $XDB_RUNTIME_DIR               // should return something like /run/user/10
 echo $DBUS_SESSION_BUS_ADDRESS      // should return something like /run/user/1001/bus
 ```
 
-Now you can create user services under /home/<username>/.config/systemd/user.
+Now you can create user services under /home/\<username\>/.config/systemd/user.
 The bot service should look something like this:
 ```
+# discord-bot.service
+
 [Unit]
 Description=Test Discord Bot
 After=multi-user.target
@@ -44,4 +46,14 @@ ExecStart=/usr/bin/python3.10 /home/marco/Projects/DiscordBot/bot.py
 
 [Install]
 WantedBy=multi-user.target
+```
+
+To control the service you then can do:
+```
+systemctl --user [start/stop/restart] <service name>
+```
+
+To have the service start on boot do:
+```
+systemctl --user enable <service name>
 ```
