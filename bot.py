@@ -1,4 +1,5 @@
 from genericpath import exists
+from random import random
 import subprocess
 import json
 import discord
@@ -42,7 +43,8 @@ async def say(ctx, message):
 
 @bot.command()
 async def cool(ctx):
-    await ctx.send(f'{ctx.author} is cool!')
+    cool_factor = random.uniform(0, 100)
+    await ctx.send(f'{ctx.author} is {cool_factor} cool!')
 
 @bot.command()
 async def update(ctx):
