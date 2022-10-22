@@ -1,5 +1,5 @@
 from genericpath import exists
-from random import random
+import random
 import subprocess
 import json
 import discord
